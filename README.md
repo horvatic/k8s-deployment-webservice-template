@@ -7,5 +7,5 @@ This depends on nginx, and assume you have a dev and prod namespace. The route f
 
 Replace SERVICENAME with the name of your service. MUST NOT BE MORE THAN 12 CHARS OR IT THE DEPLOYMENT WILL NOT WORK
 
-Replace GITHUB-USER-OR-ORG/SERVICENAME with the service github name, example: horvatic/zracni-udar-service
+Replace DOCKERHUB-OR-ORG/SERVICENAME with the service github name, example: horvatic/zracni-udar-service
 
