@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: SERVICENAME
+  labels:
+    app: SERVICENAME
+spec:
+  revisionHistoryLimit : 5
+  template:
+    metadata:
+      name: SERVICENAME
+      labels:
+        app: SERVICENAME
+    spec:
+      dnsPolicy: ClusterFirstWithHostNet 
+      containers:
+      - name: SERVICENAME
+        livenessProbe:
+          httpGet:
+            path: /prod/SERVICENAME/health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3

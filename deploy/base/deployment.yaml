@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: SERVICENAME
+  labels:
+    app: SERVICENAME
+spec:
+  selector:
+    matchLabels:
+      app: SERVICENAME
+  template:
+    spec:
+      containers:
+      - name: SERVICENAME
+        image: GITHUB-USER-OR-ORG/SERVICENAME:${TAG}
+        env:
+          - name: NAMESPACE
+            valueFrom:
+              configMapKeyRef: 
+                name: SERVICENAME-config
+                key: namespace 
+          - name: SERVICE
+            valueFrom:
+              configMapKeyRef: 
+                name: SERVICENAME-config
+                key: service
+          - name: MONGO_CONNECTION_STRING
+            valueFrom:
+              secretKeyRef: 
+                name: SERVICENAME-secret
+                key: mongo_connection_string
+          - name: MONGO_DATABASE
+            valueFrom:
+              secretKeyRef: 
+                name: SERVICENAME-secret
+                key: mongo_database
+          - name: MONGO_COLLECTION
+            valueFrom:
+              secretKeyRef: 
+                name: SERVICENAME-secret
+                key: mongo_collection
+        ports:
+          - containerPort: 8080
+            name: "SERVICENAME-http"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+

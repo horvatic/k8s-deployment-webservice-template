@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: SERVICENAME-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /default/SERVICENAME
+        pathType: Prefix
+        backend:
+          service:
+            name: SERVICENAME
+            port: 
+              number: 8080

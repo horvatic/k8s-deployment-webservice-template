@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: SERVICENAME-config
+data:
+  namespace: "default"
+  service: "SERVICENAME"
