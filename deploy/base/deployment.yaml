@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: SERVICENAME
-        image: GITHUB-USER-OR-ORG/SERVICENAME:${TAG}
+        image: DOCKERHUB-OR-ORG/SERVICENAME:${TAG}
         env:
           - name: NAMESPACE
             valueFrom:
